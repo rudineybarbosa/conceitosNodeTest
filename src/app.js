@@ -114,15 +114,12 @@ app.post("/repositories/:id/like", (request, response) => {
   const {id} = request.params;
   
   let repositoryIndex = getDataIndex(id);
+  
   let repository = repositories[repositoryIndex];
-
-  let likes = repository.likes;
   
-  likes = likes + 1;
-  
-  repository.likes = likes;//'repository' is a pointer to array element. So array element is updated
+  repository.likes += 1;//'repository' is a pointer to array element. So array element is updated
 
-  return response.json(repositories[repositoryIndex]);
+  return response.json(repository);
 
 });
 
